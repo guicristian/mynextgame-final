@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 
 // Importações
-import RootLayout from './layouts/RootLayout';
+import RootLayout from './layouts/RootLayout.jsx';
 import App from './App.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
