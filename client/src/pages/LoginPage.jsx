@@ -1,42 +1,28 @@
 
-import React, { useState } from 'react'; // Adiciona o useState
+import React, { useState   } from 'react'; // Adiciona o useState
 import { Link, useNavigate } from 'react-router-dom'; // Adiciona o useNavigate
+
+import { useAuth } from '../context/AuthContext.jsx';
 
 
 function LoginPage() {
+    const navigate = useNavigate();
+    const { login } = useAuth(); // Pega a função de login do contexto
 
-const navigate = useNavigate(); 
-
-    // Cria um "estado" para cada campo do formulário e para a mensagem de erro
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(null); 
+    const [error, setError] = useState(null);
 
     const handleSubmit = async (event) => {
-    event.preventDefault(); // Impede o recarregamento padrão da página
-    setError(null); // Limpa erros antigos
-
-    try {
-        const response = await fetch('http://localhost:5000/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password }),
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.message || 'Não foi possível fazer o login.');
+        event.preventDefault();
+        setError(null);
+        try {
+            await login(email, password); // Usa a função de login do contexto
+            navigate('/'); // Navega para a home em caso de sucesso
+        } catch (err) {
+            setError(err.response?.data?.message || 'Erro ao fazer login.');
         }
-
-        navigate('/');
-
-    } catch (err) {
-        setError(err.message);
-    }
-};
+    };
 
   return (
 

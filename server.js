@@ -146,3 +146,20 @@ app.get('/api/search-rawg/:query', verifyToken, async (req, res) => {
         res.status(500).json({ message: 'Erro ao buscar na API da RAWG.' });
     }
 });
+
+// ROTA PARA VERIFICAR O TOKEN E RETORNAR DADOS DO USUÁRIO
+// Usa nosso middleware 'verifyToken' que já existe
+app.get('/api/verify-token', verifyToken, (req, res) => {
+    // Se o middleware verifyToken passar, o req.user já terá os dados do usuário
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    res.status(200).json(req.user);
+});
+
+// ROTA PARA FAZER LOGOUT
+app.post('/api/logout', (req, res) => {
+    // Limpa o cookie do token, efetivamente deslogando o usuário
+    res.cookie('token', '', { expires: new Date(0), httpOnly: true });
+    res.status(200).json({ message: 'Logout bem-sucedido.' });
+});
