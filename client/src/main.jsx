@@ -12,6 +12,10 @@ import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import MyListPage from './pages/MyListPage.jsx';
+import ProfilePage from './pages/ProfilePage.jsx'; 
+import ForgotPasswordPage from './pages/ForgotPasswordPage.jsx';
+import ResetPasswordPage from './pages/ResetPasswordPage.jsx';
+
 
 
 const router = createBrowserRouter([
@@ -28,6 +32,19 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPage />
+      },
+      {
+        path: "/perfil/:userId",
+        element: <ProfilePage />
+      },
+      { path: "/reset-password/:token",
+         element: <ResetPasswordPage /> 
+      },
+      { path: "/forgot-password",
+         element: <ForgotPasswordPage /> 
+      },
+      { path: "/profile/:userId",
+         element: <ProfilePage /> 
       },
       {
         element: <ProtectedRoute />, // O "segurança" fica aqui

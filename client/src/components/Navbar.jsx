@@ -29,6 +29,11 @@ function Navbar() {
                 </Link>
               </li>
               <li>
+                 <li>
+                     <Link to={`/perfil/${user.userId}`} className="hover:text-green-400 transition">
+                         Meu Perfil
+                     </Link>
+                 </li>
                 <span className="text-gray-400">Olá, {user.email}</span>
               </li>
               <li>

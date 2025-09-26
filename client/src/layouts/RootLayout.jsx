@@ -5,12 +5,18 @@ import Navbar from '../components/Navbar';
 
 function RootLayout() {
   return (
-    <div className="bg-gray-900 min-h-screen text-white">
-      <Navbar />
-      <main>
-        {/* O <Outlet> é onde o React Router irá renderizar a página da rota atual (Login, Home, etc.) */}
-        <Outlet />
-      </main>
+
+    <div 
+      className="min-h-screen bg-cover bg-center bg-fixed" 
+      style={{ backgroundImage: "url('/images/background.jpg')" }} 
+    >
+      {/* Adicionamos uma camada semi-transparente para melhorar a legibilidade do conteúdo */}
+      <div className="min-h-screen bg-black bg-opacity-60">
+        <Navbar />
+        <main>
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 }

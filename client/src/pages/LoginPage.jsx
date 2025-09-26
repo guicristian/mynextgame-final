@@ -71,6 +71,12 @@ function LoginPage() {
             />
           </div>
 
+          <div className="text-right mb-6">
+                    <Link to="/forgot-password" className="text-sm text-gray-400 hover:underline">
+                        Esqueceu a senha?
+                    </Link>
+           </div>
+
           {/* Botão de Login */}
           <button 
             type="submit"

@@ -43,8 +43,8 @@ await api.post('/api/logout');
     setUser(null);
   };
 
-  const register = async (email, password) => {
-    await api.post('/api/register', { email, password });
+const register = async (username, email, password) => {
+    return await api.post('/api/register', { username, email, password });
 };
 
   // O valor que será compartilhado com todos os componentes "conectados"
